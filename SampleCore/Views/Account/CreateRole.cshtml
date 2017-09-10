@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "CreateRole";
+}
+
+<h2>Create Role</h2>
+
+@Html.Raw(ViewBag.Message)
+
+<form asp-action="CreateRole" method="post">
+    <label for="roleName">Role Name :</label><br />
+    <input type="text" name="roleName" placeholder="masukan role name" /><br /><br />
+    <button type="submit">Submit</button>
+</form>
+

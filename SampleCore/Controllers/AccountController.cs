@@ -47,14 +47,19 @@ namespace SampleCore.Controllers
         }
 
         [HttpPost]
-        public async Task CreateRole(string roleName)
+        public async Task<IActionResult> CreateRole(string roleName)
         {
             IdentityResult roleResult;
             var roleExist = await _roleManager.RoleExistsAsync(roleName);
             if (!roleExist)
             {
+                ViewBag.Message = "<div class='alert alert-success'>Role berhasil ditambah</div>";
                 roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
+                return View();
             }
+
+            ViewBag.Message = "<div class='alert alert-warning'>Role ini sudah ada</div>";
+            return View();
         }
 
         [TempData]
