@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "RegisterUserToRole";
+}
+
+<h2>Register User To Role</h2>
+<br />
+@Html.Raw(ViewBag.Message)
+
+<form asp-action="RegisterUserToRole" method="post">
+    <label for="strUser">Username :</label><br />
+    <input type="text" name="strUser" placeholder="masukan username"/><br /><br />
+    <label for="strRole">Role :</label><br />
+    <input type="text" name="strRole" placeholder="masukan role" /><br /><br />
+    <button type="submit">Submit</button>
+</form>
+
+

@@ -62,6 +62,25 @@ namespace SampleCore.Controllers
             return View();
         }
 
+        public IActionResult RegisterUserToRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterUserToRole(string strUser,string strRole)
+        {
+            var user = await _userManager.FindByNameAsync(strUser);
+            if (user != null)
+            {
+                await _userManager.AddToRoleAsync(user, strRole);
+                ViewBag.Message = "<div class='alert alert-success'>Berhasil mendaftarkan user ke role</div>";
+                return View();
+            }
+            ViewBag.Message = "<div class='alert alert-warning'>User ini tidak ditemukan</div>";
+            return View();
+        }
+
         [TempData]
         public string ErrorMessage { get; set; }
 
