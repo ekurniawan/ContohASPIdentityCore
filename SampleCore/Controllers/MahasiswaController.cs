@@ -12,7 +12,7 @@ namespace SampleCore.Controllers
     public class MahasiswaController : Controller
     {
         // GET: Mahasiswa
-        
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -24,7 +24,7 @@ namespace SampleCore.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         // GET: Mahasiswa/Create
         public ActionResult Create()
         {

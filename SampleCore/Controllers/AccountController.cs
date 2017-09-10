@@ -276,6 +276,10 @@ namespace SampleCore.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
+
+                    //begitu mendaftar pertama kali maka langsung mendapat role pengguna
+                    await _userManager.AddToRoleAsync(user, "Pengguna");
+
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
